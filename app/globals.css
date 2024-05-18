@@ -31,3 +31,13 @@ body {
     text-wrap: balance;
   }
 }
+
+#graph-container {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #1A1A1A;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
