@@ -1,0 +1,25 @@
+{
+  "name": "project-pastels-wager",
+  "version": "1.0.0",
+  "description": "An advanced betting system for MMA fight outcomes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start:frontend": "npm run dev --prefix frontend",
+    "start:backend": "node backend/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "csv-parser": "^3.0.0",
+    "dotenv": "^10.0.0",
+    "firebase": "^9.6.1",
+    "mongoose": "^8.4.0"
+  },
+  "devDependencies": {
+    "@firebase/testing": "^0.20.9",
+    "firebase-admin": "^12.1.0",
+    "jest": "^27.4.3"
+  }
+}

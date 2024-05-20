@@ -1,32 +1,36 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 
 const useFighters = () => {
     const [fighters, setFighters] = useState([]);
-    const [error, setError] = useState(null);
-
-    const fetchFighters = async () => {
-        try {
-            const response = await axios.get('http://localhost:8001/api/fighters');
-            setFighters(response.data.fighters);
-        } catch (error) {
-            console.error('Error fetching fighters:', error);
-            setError(error);
-        }
-    };
+    const [stats, setStats] = useState({ ages: [], weights: [] });
 
     useEffect(() => {
+        const fetchFighters = async () => {
+            try {
+                const response = await api.get('/api/fightData');
+                setFighters(response.data);
+                const ages = response.data.map(fighter => fighter.age);
+                const weights = response.data.map(fighter => fighter.weight_lbs);
+                setStats({ ages, weights });
+            } catch (error) {
+                console.error("Error fetching fighters: ", error);
+            }
+        };
+
         fetchFighters();
     }, []);
 
-    return { fighters, error, fetchFighters };
+    const fetchFighterById = async (id) => {
+        try {
+            const response = await api.get(`/api/fightData/${id}`);
+            return response.data;
+        } catch (error) {
+            console.error("Error fetching fighter by ID: ", error);
+        }
+    };
+
+    return { fighters, setFighters, stats, fetchFighterById };
 };
 
 export default useFighters;
-
-
-
-
-
-
-

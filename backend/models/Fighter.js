@@ -35,3 +35,4 @@ const fighterSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Fighter', fighterSchema);
+

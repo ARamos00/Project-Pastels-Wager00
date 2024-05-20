@@ -1,7 +1,5 @@
 require('dotenv').config();
 const debug = require('debug');
-
-// Programmatically enable debug for 'server' namespace
 debug.enable('server');
 
 const express = require('express');
@@ -12,7 +10,7 @@ const debugLog = debug('server');
 
 const app = express();
 const PORT = parseInt(process.env.PORT, 10) || 8001;
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/pastel_wager';
 
 app.use(cors());
 app.use(morgan('dev'));
@@ -23,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 // Use fight data routes
-const fightDataRoutes = require('./api/fightData');
+const fightDataRoutes = require('./routes/fightData');
 app.use('/api/fightData', fightDataRoutes);
 
 async function connectToDatabase() {
@@ -82,28 +80,3 @@ initialize().then(() => {
 });
 
 module.exports = app;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

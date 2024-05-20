@@ -18,7 +18,8 @@
     "faker": "^6.6.6",
     "mongodb": "4.1",
     "mongoose": "^8.4.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "plotly.js": "^2.32.0",
+    "react-plotly.js": "^2.6.0"
   }
 }
-
